@@ -5,9 +5,11 @@
 <ul>
   <% @lists.each do |list| %>
     <p><%= link_to list.name, list_path(list) %></p>
+    <ul>
       <% list.tasks.each do |task| %>
-        <p><%= task.name %></p>
+        <li><%= task.name %> <%= button_to "Remove Task", task, :method => :delete %></li>
       <% end %>
+    </ul>
   <% end %>
 </ul>
 <ul>

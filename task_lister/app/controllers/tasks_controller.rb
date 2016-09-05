@@ -10,4 +10,12 @@ class TasksController < ApplicationController
     redirect_to list_path(@task.list.id)
   end
 
+  def destroy
+    @task = Task.find_by(id: params[:id])
+    @list = @task.list
+    @board = @list.board
+    @task.destroy
+    redirect_to board_path(@board)
+  end
+
 end
