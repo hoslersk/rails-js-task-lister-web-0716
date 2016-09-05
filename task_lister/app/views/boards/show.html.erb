@@ -5,6 +5,9 @@
 <ul>
   <% @lists.each do |list| %>
     <p><%= link_to list.name, list_path(list) %></p>
+      <% list.tasks.each do |task| %>
+        <p><%= task.name %></p>
+      <% end %>
   <% end %>
 </ul>
 <ul>

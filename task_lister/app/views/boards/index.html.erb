@@ -1,6 +1,17 @@
 <h1>All Boards</h1>
 <% @boards.each do |board| %>
-<ul>
-  <p><%= link_to board.name, board_path(board) %></p>
-</ul>
+  <ul>
+    <p><%= link_to board.name, board_path(board) %></p>
+      <% board.lists.each do |list| %>
+        <ul>
+          <p><%= link_to list.name, list_path(list) %></p>
+          <ul>
+            <% list.tasks.each do |task| %>
+              <li><%= task.name %></li>
+            <% end %>
+          </ul>
+        </ul>
+      <% end %>
+  </ul>
 <% end %>
+<h4><%= link_to "Add Board", new_board_path %></h4>

@@ -1,2 +1,17 @@
 <h4>Back to <%= link_to @list.board.name, board_path(@list.board) %> Board</h4>
 <h1><%= @list.name %></h1>
+<ul>
+  <% @tasks.each do |task| %>
+    <p><%= task.name %></p>
+  <% end %>
+</ul>
+<ul>
+  <%= form_for(@task) do |f| %>
+    <p><%= f.label :name %></p>
+    <p><%= f.text_field :name %></p>
+    <!-- <p><%#= f.label :complete? %></p>
+    <p><%#= f.check_box :complete?, {}, true, false %></p> -->
+    <p><%= f.collection_select :list_id, List.all, :id, :name %></p>
+    <p><%= f.submit %></p>
+  <% end %>
+</ul>
