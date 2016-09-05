@@ -1,6 +1,8 @@
 class BoardsController < ApplicationController
   def show
     @board = Board.find_by(id: params[:id])
+    @lists = List.where(board_id: params[:id])
+    @list = List.new
   end
   def index
     @boards = Board.all

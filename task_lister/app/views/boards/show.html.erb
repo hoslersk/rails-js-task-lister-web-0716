@@ -1,0 +1,17 @@
+<h4>Back to <%= link_to "All Boards", boards_path %></h4>
+
+<h1>Board</h1>
+<h2><%= @board.name %></h2>
+<ul>
+  <% @lists.each do |list| %>
+    <p><%= link_to list.name, list_path(list) %></p>
+  <% end %>
+</ul>
+<ul>
+  <%= form_for(@list) do |f| %>
+    <p><%= f.label :name %></p>
+    <p><%= f.text_field :name %></p>
+    <p><%= f.collection_select :board_id, Board.all, :id, :name %></p>
+    <%= f.submit "Add List" %>
+  <% end %>
+</ul>
