@@ -5,6 +5,7 @@ class BoardsController < ApplicationController
     @lists = List.where(board_id: params[:id])
     # byebug
     @list = List.new
+    @task = Task.new
   end
 
   def index
