@@ -15,8 +15,9 @@
           <p><%= f.text_field :name %></p>
           <!-- <p><%#= f.label :complete? %></p>
           <p><%#= f.check_box :complete?, {}, true, false %></p> -->
-          <p><%= f.label "Select List:" %></p>
-          <p><%= f.collection_select :list_id, List.all, :id, :name %></p>
+          <!-- <p><%#= f.label "Select List:" %></p> -->
+          <%= f.hidden_field :list_id, :value => list.id %>
+          <!-- <p><%#= f.collection_select :list_id, List.all, :id, :name %></p> -->
           <p><%= f.submit "Add Task" %></p>
         <% end %>
       </ul>
@@ -28,8 +29,9 @@
   <%= form_for(@list, {remote: true, html: {class: 'list_index', 'data-type' => 'json'}}) do |f| %>
     <p><%= f.label 'New List Name:' %></p>
     <p><%= f.text_field :name %></p>
-    <p><%= f.label 'Select Board:' %></p>
-    <p><%= f.collection_select :board_id, Board.all, :id, :name %></p>
+    <!-- <p><%#= f.label 'Select Board:' %></p> -->
+    <%= f.hidden_field :board_id, :value => @board.id %>
+    <!-- <p><%#= f.collection_select :board_id, Board.all, :id, :name %></p> -->
     <%= f.submit "Add List" %>
   <% end %>
 </ul>
